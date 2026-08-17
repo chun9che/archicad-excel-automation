@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "archicad-excel-automation"
+version = "0.1.0"
+description = "Reusable Archicad room schedule to Excel template mapping engine."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+  "openpyxl>=3.1",
+  "PyYAML>=6.0",
+]
+
+[project.scripts]
+archicad-excel = "archicad_excel.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

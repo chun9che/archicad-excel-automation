@@ -1,0 +1,61 @@
+# Workbook and office artifacts
+*.xlsx
+*.xls
+*.xlsm
+
+# Production exports and local data
+*.txt
+*.csv
+!requirements.txt
+input/
+output/
+projects/
+private/
+private_configs/
+temp/
+tmp/
+development/
+
+# Local production notes from prior private implementations
+FILE_INSPECTION.md
+MAPPING.md
+PROJECT_HANDOFF_RECORD.md
+SPEC.md
+TEST_PLAN.md
+docs/*_IMPLEMENTATION.md
+docs/*_PUBLISH.md
+docs/*_TEST_RESULTS.md
+docs/IMPLEMENTATION.md
+docs/PUBLISH.md
+docs/TEST_RESULTS.md
+
+# Allow only sanitized example text/CSV data
+!examples/
+!examples/**/*.txt
+!examples/**/*.csv
+
+# Secrets and local credentials
+.env
+.env.*
+credentials*.json
+token*.json
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

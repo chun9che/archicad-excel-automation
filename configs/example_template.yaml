@@ -1,0 +1,16 @@
+template:
+  worksheet: Topographie
+  unit_table:
+    first_data_row: 6
+    last_data_row: 8
+    unit_column: D
+  fields:
+    wohnnutzflaeche:
+      column: E
+    balkon:
+      column: F
+    loggia:
+      column: G
+    kellerabteil:
+      column: H
+  total_row: 9

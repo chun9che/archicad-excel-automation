@@ -1,0 +1,35 @@
+project_id: synthetic_demo
+
+parser:
+  type: archicad_txt
+  delimiter: "\t"
+  encoding: utf-8-sig
+  decimal_separator: ","
+  columns:
+    floor: Geschoß
+    unit: Top
+    room_type: Raumname
+    area: Fläche
+
+normalization:
+  strip_prefixes:
+    - DEMO
+
+room_type_mappings:
+  wohnnutzflaeche:
+    - Wohnfläche
+    - Wohnnutzfläche
+  balkon:
+    - Balkon
+  loggia:
+    - Loggia
+  kellerabteil:
+    - Kellerabteil
+    - Einlagerungsraum
+    - KA
+
+special_mappings:
+  kellerabteil:
+    source_room_type: Kellerabteil
+    identifier_pattern: KA{number}
+    target_unit_pattern: "TOP {number:02d}"

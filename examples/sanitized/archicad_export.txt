@@ -1,0 +1,9 @@
+Typ	Geschoß	Top	Raumname	Fläche
+Typ A	EG	DEMO_TOP 01	Wohnfläche	72,40
+Typ A	EG	DEMO_TOP 01	Balkon	8,20
+Typ A	KG	DEMO_KA1	Kellerabteil	3,10
+Typ B	1.OG	DEMO_TOP 02	Wohnfläche	65,80
+Typ B	1.OG	DEMO_TOP 02	Loggia	5,60
+Typ B	KG	KA2	Kellerabteil	2,95
+Typ C	2.OG	TOP03	Wohnfläche	81,25
+Typ C	KG	KA3	Kellerabteil	4,05
