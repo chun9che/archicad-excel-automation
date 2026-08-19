@@ -31,5 +31,6 @@ room_type_mappings:
 special_mappings:
   kellerabteil:
     source_room_type: Kellerabteil
+    target_room_type: Kellerabteil
     identifier_pattern: KA{number}
     target_unit_pattern: "TOP {number:02d}"

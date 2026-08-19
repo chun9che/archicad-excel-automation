@@ -44,19 +44,28 @@ def parse_archicad_txt(path: str | Path, config: dict[str, Any]) -> list[RoomRec
             if not source_unit or not room_type:
                 continue
 
-            room_id = normalize_room_identifier(source_unit, prefixes)
+            source_unit_id = normalize_room_identifier(source_unit, prefixes)
+            room_name_id = normalize_room_identifier(room_type, prefixes)
+            room_id = room_name_id or source_unit_id
             unit = normalize_unit(source_unit, prefixes)
+            normalized_room_type = room_type
 
             for rule in special.values():
                 source_room = rule.get("source_room_type")
-                if source_room and source_room.casefold() == room_type.casefold() and room_id:
+                identifier_prefix = (rule.get("identifier_pattern") or "").split("{", 1)[0]
+                source_room_matches = source_room and source_room.casefold() == room_type.casefold()
+                identifier_matches = bool(
+                    room_id and identifier_prefix and room_id.upper().startswith(identifier_prefix.upper())
+                )
+                if room_id and (source_room_matches or identifier_matches):
                     unit = unit_from_identifier(room_id, rule.get("target_unit_pattern", "TOP {number:02d}"))
+                    normalized_room_type = rule.get("target_room_type") or source_room or room_type
 
             records.append(
                 RoomRecord(
                     unit=unit,
                     room_id=room_id,
-                    room_type=room_type,
+                    room_type=normalized_room_type,
                     floor=(row.get(columns["floor"]) or "").strip(),
                     area=_parse_area(row.get(columns["area"]) or "0", decimal_separator),
                     source_unit=source_unit,

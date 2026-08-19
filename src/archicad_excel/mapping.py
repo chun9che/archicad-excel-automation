@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from .models import MappedRecord, RoomRecord
+from .normalize import normalize_room_identifier
 
 
 def map_records(records: list[RoomRecord], config: dict[str, Any]) -> tuple[list[MappedRecord], list[RoomRecord]]:
@@ -16,6 +17,8 @@ def map_records(records: list[RoomRecord], config: dict[str, Any]) -> tuple[list
 
     for record in records:
         field = semantic_map.get(record.room_type.casefold())
+        if field is None and normalize_room_identifier(record.room_type):
+            field = semantic_map.get("ka")
         if field is None:
             unmapped.append(record)
             continue
